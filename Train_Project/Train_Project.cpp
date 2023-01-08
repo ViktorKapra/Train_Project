@@ -7,17 +7,24 @@
 #include "Logic.hpp"
 #include<iostream>
 #include<fstream>
-
+//#include "Box/Box.hpp"
+#include "Box/BoxManagement.hpp"
 int main()
 {
-	Logic g;
+	BoxManagement bm;
+	bm.insertBoxes();
+	
+
+//	Logic g;
 //	g.insertRoute();
 //	g.findOptimalWay();
-	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
-	if(s.is_open())
-	g.findLongestLandmarksWay(s);
+//	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
+//	if(s.is_open())
+//	g.findLongestLandmarksWay(s);
 	//g.printRoute();
 }
+
+
 /*
 9
 Sofia Pazardzhik Plovdiv Dimitrovgrad StaraZagora NovaZagora Yambol Karnobat Burgas
@@ -29,5 +36,22 @@ NovaZagora Burgas
 End
 3
 Plovdiv StaraZagora Yambol
+*/
+
+
+/*
+10
+PlovdivBox 2 Magnet Book 2 ArtBox TheatreBox
+ArtBox 0 1 Drawings
+Drawings 1 OldPlovdiv 0
+TheatreBox 0 1 TheatreSouvenirs
+TheatreSouvenirs 0 2 Plates Bags
+Plates 1 DecorativePlate 0
+Bags 0 0
+StaraZagoraBox 1 Postcard 2 Figurines Cups
+Figurines 1 AncientFigurine 0
+Cups 1 TraditionalCup 0
+
+
 */
 
