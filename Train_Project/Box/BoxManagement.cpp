@@ -52,7 +52,7 @@ void BoxManagement::insertInnerBox(Box* box_ptr)
 			boxes.erase(temp);
 			innerBox_ptr = &newInnerBox;
 		}
-		box_ptr->addBox(*innerBox_ptr);
+		
 	}
 }
 
