@@ -9,42 +9,16 @@
 
 #include<iostream>
 #include<fstream>
-//#include "RouteManager/RouteManager.hpp"
+
 #include "Box/BoxManagement.hpp"
-//#include "WalkManager/WalkManager.hpp"
 int main()
 {
 	BoxManagement bm;
 	bm.insertBoxes();
 	bm.optimizeBoxes();
 	bm.printBoxes();
-	
 
-//	RouteManager g;
-//	g.insertRoute();
-//	g.findOptimalWay();
-// 
-	/*WalkManager g;
-	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
-	if(s.is_open())
-	g.findLongestLandmarksWay(s);
-	std::cout<<std::endl;*/
 }
-
-
-/*
-9
-Sofia Pazardzhik Plovdiv Dimitrovgrad StaraZagora NovaZagora Yambol Karnobat Burgas
-Sofia Plovdiv
-Plovdiv NovaZagora
-Dimitrovgrad NovaZagora
-StaraZagora Yambol
-NovaZagora Burgas
-End
-3
-Plovdiv StaraZagora Yambol
-*/
-
 
 /*
 10

@@ -96,7 +96,12 @@ std::string WalkManager::findKey(int elem, std::map<std::string, int>& encoding)
 		if (it->second == elem)
 			return it->first;
 }
-
+/// <summary>
+///  read information about landmarks
+///	 encodes landmarks relation into a graph
+/// </summary>
+/// <param name="is"></param>
+/// <returns> Longest way that can be passed for the given time </returns>
 std::vector<std::string> WalkManager::findLongestLandmarksWay(std::ifstream& is)
 {
 	int landmarksCount;

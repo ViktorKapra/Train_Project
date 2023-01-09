@@ -18,6 +18,7 @@ void RouteManager::insertRoute(std::istream& is = std::cin)
 		route.addLast(station);
 	}
 
+	std::cout << "Insert connections (if you want to stop insert \"End\" ) : " << std::endl;
 	std::string start;
 	std::string end;
 	do
@@ -25,13 +26,12 @@ void RouteManager::insertRoute(std::istream& is = std::cin)
 		is.ignore();
 
 		is >> start;
-		//s.ignore();
 		if (start != "End")
 		{
 			is >> end;
 			route.addConnection(route.findNode(start), route.findNode(end));
 		}
-	} while (start != "End");
+	} while (start != "End"); // inserting of connections ends when trigger word "End" is inserted
 }
 
 void RouteManager::printRoute()
