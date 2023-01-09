@@ -5,12 +5,12 @@
 
 
 
-std::vector<Box>::iterator BoxManagement::findBoxPosition(Box const& box)
+std::vector<Box*>::iterator BoxManagement::findBoxPosition(Box const& box)
 {
-	for (std::vector<Box>::iterator pos = boxes.begin();
+	for (std::vector<Box*>::iterator pos = boxes.begin();
 		pos != boxes.end(); pos++)
 	{
-		if(box == *pos)
+		if(box == **pos)
 		{
 			return pos;
 		}
@@ -39,18 +39,16 @@ void BoxManagement::insertInnerBox(Box* box_ptr)
 		std::string innerBoxLabel;
 		std::cin >> innerBoxLabel;
 		Box* innerBox_ptr = findBox(innerBoxLabel);
-		Box newInnerBox;
 		if (nullptr == innerBox_ptr)
 		{
-			newInnerBox.setLabel(innerBoxLabel);
-			innerBox_ptr = &newInnerBox;
+			Box* newBoxptr = new Box(innerBoxLabel);
+			box_ptr->addBox(newBoxptr);
 		}
 		else
 		{
-			std::vector<Box>::iterator temp = findBoxPosition(*innerBox_ptr);
-			newInnerBox = *temp;
+			std::vector<Box*>::iterator temp = findBoxPosition(*innerBox_ptr);
+			box_ptr->addBox(*temp);
 			boxes.erase(temp);
-			innerBox_ptr = &newInnerBox;
 		}
 		
 	}
@@ -70,9 +68,9 @@ void BoxManagement::insertBoxes()
 		Box* currentBox_ptr = findBox(label);
 		if (currentBox_ptr == nullptr)
 		{
-			Box newBox(label);
+			Box* newBox = new Box(label);
 			boxes.push_back(newBox);
-			currentBox_ptr = &boxes.back();
+			currentBox_ptr = newBox;
 		}
 
 		insertSouvenirsInBox(currentBox_ptr);
@@ -82,10 +80,10 @@ void BoxManagement::insertBoxes()
 }
 Box* BoxManagement::findBox(std::string const& label)
 {
-	for (std::vector<Box>::iterator it = boxes.begin();
+	for (std::vector<Box*>::iterator it = boxes.begin();
 		it != boxes.end(); it++)
 	{
-		Box* result = it->findBox(label);
+		Box* result = (*it)->findBox(label);
 		if (nullptr != result)
 		{
 			return result;
@@ -93,8 +91,33 @@ Box* BoxManagement::findBox(std::string const& label)
 	}
 		return nullptr;
 }
+BoxManagement::~BoxManagement()
+{
+	for (Box* b : boxes)
+	{
+		delete b;
+	}
+}
+
+void BoxManagement::optimizeBoxes()
+{
+	Box p("helperBox");
+	for (std::vector<Box*>::iterator it = boxes.begin();
+		it != boxes.end(); it++)
+	{
+		p.addBox(*it);
+	}
+	p.optimize();
+	p.boxes.clear();
+	
+}
 void BoxManagement::printBoxes()
 {
-
+	std::cout << "Boxes : " << std::endl;
+	for (int i = 0; i < boxes.size(); i++)
+	{
+		boxes[i]->printBox();
+		std::cout << std::endl;
+	}
 
 }
