@@ -97,7 +97,7 @@ std::string WalkManager::findKey(int elem, std::map<std::string, int>& encoding)
 			return it->first;
 }
 
-void WalkManager::findLongestLandmarksWay(std::ifstream& is)
+std::vector<std::string> WalkManager::findLongestLandmarksWay(std::ifstream& is)
 {
 	int landmarksCount;
 	is >> landmarksCount;
@@ -132,12 +132,17 @@ void WalkManager::findLongestLandmarksWay(std::ifstream& is)
 		}
 	}
 
+	std::vector<std::string> result;
 	if (maximalPath.size() > 0)
 	{
 		for (int i = 0; i < maximalPath.size(); i++)
 		{
-			std::cout << findKey(maximalPath[i], encoding) << " ";
+			result.push_back(findKey(maximalPath[i], encoding));
 		}
 	}
-
+	else
+	{
+		result.push_back("Railstation");
+	}
+	return result;
 }

@@ -1,31 +1,33 @@
 ﻿// Train_Project.cpp : Defines the entry point for the application.
 //
 
-//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-//#include "doctest.hpp"
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.hpp"
+//#include "RouteManager/RouteManager_test.hpp"
 //#include "SkipList/SkipList_test.hpp"
+#include "WalkManager/WalkManager_test.hpp"
 
-#include<iostream>
-#include<fstream>
-#include "RouteManager/RouteManager.hpp"
-#include "Box/BoxManagement.hpp"
-#include "WalkManager/WalkManager.hpp"
-int main()
-{
-	//BoxManagement bm;
-	//bm.insertBoxes();
-	
-
-//	RouteManager g;
-//	g.insertRoute();
-//	g.findOptimalWay();
-// 
-	WalkManager g;
-	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
-	if(s.is_open())
-	g.findLongestLandmarksWay(s);
-	std::cout<<std::endl;
-}
+//#include<iostream>
+//#include<fstream>
+//#include "RouteManager/RouteManager.hpp"
+//#include "Box/BoxManagement.hpp"
+//#include "WalkManager/WalkManager.hpp"
+//int main()
+//{
+//	//BoxManagement bm;
+//	//bm.insertBoxes();
+//	
+//
+////	RouteManager g;
+////	g.insertRoute();
+////	g.findOptimalWay();
+//// 
+//	/*WalkManager g;
+//	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
+//	if(s.is_open())
+//	g.findLongestLandmarksWay(s);
+//	std::cout<<std::endl;*/
+//}
 
 
 /*

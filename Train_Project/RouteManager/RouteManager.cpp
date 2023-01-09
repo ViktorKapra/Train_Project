@@ -7,14 +7,14 @@
 #include <algorithm>
 
 #define SkipListIterator SkipNode<std::string>*
-void RouteManager::insertRoute()
+void RouteManager::insertRoute(std::istream& is = std::cin)
 {
 	std::cout << "Enter count of the stations: ";
-	std::cin >> lenght;
+	is >> lenght;
 	for (int i = 0; i < lenght; i++)
 	{
 		std::string station;
-		std::cin >> station;
+		is >> station;
 		route.addLast(station);
 	}
 
@@ -22,13 +22,13 @@ void RouteManager::insertRoute()
 	std::string end;
 	do
 	{
-		std::cin.ignore();
+		is.ignore();
 
-		std::cin >> start;
-		//std::cin.ignore();
+		is >> start;
+		//s.ignore();
 		if (start != "End")
 		{
-			std::cin >> end;
+			is >> end;
 			route.addConnection(route.findNode(start), route.findNode(end));
 		}
 	} while (start != "End");
@@ -39,16 +39,16 @@ void RouteManager::printRoute()
 	route.print();
 }
 
-std::vector<std::string>  RouteManager::insertDesiredDestinations()
+std::vector<std::string>  RouteManager::insertDesiredDestinations(std::istream& is = std::cin)
 {
 	std::vector<std::string> result;
 	std::string station;
 	int count;
 	std::cout << "Insert count of desired destinations: ";
-	std::cin >> count;
+	is >> count;
 	for (int i = 0; i < count; i++)
 	{
-		std::cin >> station;
+		is >> station;
 		result.push_back(station);
 	}
 	return result;
@@ -64,9 +64,9 @@ bool RouteManager::contain(std::vector<std::string> const& v, std::string const&
 	return false;
 }
 
-void RouteManager::findOptimalWay()
+std::vector<std::string> RouteManager::findOptimalWay(std::istream& is = std::cin)
 {
-	std::vector<std::string> destinations = insertDesiredDestinations();
+	std::vector<std::string> destinations = insertDesiredDestinations(is);
 	if (!contain(destinations, route.getEnd()->data))
 	{
 		destinations.push_back(route.getEnd()->data);
@@ -101,6 +101,7 @@ void RouteManager::findOptimalWay()
 	{
 		std::cout << station << " ";
 	}
+	return result;
 }
 
 std::vector<std::string> RouteManager::findPathToDestination(std::string const& destination, SkipNode<std::string>* iter)

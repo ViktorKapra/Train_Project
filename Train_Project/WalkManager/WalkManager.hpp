@@ -14,5 +14,5 @@ private:
 	int currentPoint, std::vector<int>& path, int endPoint, int timeLimit);
 	std::string findKey(int elem, std::map<std::string, int>& encoding);
 public:
-	void findLongestLandmarksWay(std::ifstream& is);
+	std::vector<std::string> findLongestLandmarksWay(std::ifstream& is);
 };
