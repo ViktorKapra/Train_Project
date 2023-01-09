@@ -4,24 +4,27 @@
 //#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 //#include "doctest.hpp"
 //#include "SkipList/SkipList_test.hpp"
-#include "Logic.hpp"
+
 #include<iostream>
 #include<fstream>
-//#include "Box/Box.hpp"
+#include "RouteManager/RouteManager.hpp"
 #include "Box/BoxManagement.hpp"
+#include "WalkManager/WalkManager.hpp"
 int main()
 {
-	BoxManagement bm;
-	bm.insertBoxes();
+	//BoxManagement bm;
+	//bm.insertBoxes();
 	
 
-//	Logic g;
+//	RouteManager g;
 //	g.insertRoute();
 //	g.findOptimalWay();
-//	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
-//	if(s.is_open())
-//	g.findLongestLandmarksWay(s);
-	//g.printRoute();
+// 
+	WalkManager g;
+	std::ifstream s("D:\\Stuff\\uni\\SDP\\Train_Project\\Train_Project\\Train_Project\\Burgas.txt");
+	if(s.is_open())
+	g.findLongestLandmarksWay(s);
+	std::cout<<std::endl;
 }
 
 
